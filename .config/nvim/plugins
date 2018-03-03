@@ -1,0 +1,44 @@
+call plug#begin('~/.local/share/nvim/plugged')
+
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-obsession'
+" Plug 'airblade/vim-gitgutter'
+Plug 'tomtom/tlib_vim'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'benmills/vimux'
+Plug 'mattn/emmet-vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'editorconfig/editorconfig-vim'
+" Plug 'chriskempson/base16-vim'
+Plug 'jeetsukumaran/vim-buffergator'
+Plug 'rgarver/Kwbd.vim'
+Plug 'ervandew/supertab'
+Plug 'itspriddle/ZoomWin'
+Plug 'rking/ag.vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'Rykka/colorv.vim'
+Plug 'vim-scripts/gitignore'
+Plug 'morhetz/gruvbox'
+Plug 'w0rp/ale'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+" Languages
+Plug 'chrisbra/csv.vim'
+Plug 'tpope/vim-git'
+Plug 'elzr/vim-json'
+Plug 'tpope/vim-markdown'
+" Plug 'mmalecki/vim-node.js'
+Plug 'pangloss/vim-javascript'
+" Plug 'mxw/vim-jsx'
+Plug 'chemzqm/vim-jsx-improve'
+Plug 'jparise/vim-graphql'
+Plug 'reasonml-editor/vim-reason-plus'
+
+" Initialize plugin system
+call plug#end()
