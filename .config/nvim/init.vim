@@ -1,4 +1,9 @@
-" set the runtime path to include Plugged
+" Check if plug is installed, if not, install and install plugins
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
 source ~/.config/nvim/plugins
 
