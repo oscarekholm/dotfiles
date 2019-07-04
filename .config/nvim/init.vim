@@ -5,13 +5,22 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+set shell=bash\ -i
+
 source ~/.config/nvim/plugins
 
-colorscheme gruvbox
-set background=dark
+" colorscheme gruvbox
+" set background=dark
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
+" Check for base16 configuration
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+
 set number
+set relativenumber
 set ruler
 syntax enable
 set encoding=utf-8
@@ -61,11 +70,10 @@ if has("statusline") && !&cpo
     set laststatus=2  " always show the status bar
 
     " Start the status line
-    set statusline=%f\ %m\ %r
-    set statusline+=Line:%l/%L[%p%%]
-    set statusline+=Col:%v
-    set statusline+=Buf:#%n
-    set statusline+=[%b][0x%B]
+    set statusline=Line:\ %l/%L[%p%%]
+    set statusline+=\ Col:\ %v
+    set statusline+=\ Session:\ %{ObsessionStatus()}
+    set statusline+=%=\ %f\ %m
 endif
 
 autocmd StdinReadPre * let s:std_in=1
@@ -87,24 +95,25 @@ set mouse=a
 
 " Syntastic settings
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_loc_list_height = 5
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-highlight link SyntasticErrorSign SignColumn
-highlight link SyntasticWarningSign SignColumn
-highlight link SyntasticStyleErrorSign SignColumn
-highlight link SyntasticStyleWarningSign SignColumn
 
-" ALE Settings
-let g:ale_fixers = {
+let g:ale_fixers = {}
+let g:ale_linters = {}
+
+let g:ale_linters = {
 \   'javascript': ['eslint'],
-\   'reason': ['refmt'],
+\   'python': ['flake8'],
 \}
+
+let g:ale_fixers.javascript = ['eslint']
+let g:ale_fixers.python = ['black']
+let g:ale_fixers.reason = ['refmt']
+
 let g:ale_fix_on_save = 1
+let g:ale_python_flake8_options = '--max-line-length=90 --ignore E203,E266,E501,W503 --max-complexity 18 --select B,C,E,F,W,T4,B9'
+
+nmap <silent> <leader>j :ALENext<cr>
+nmap <silent> <leader>k :ALEPrevious<cr>
 
 " Make sure all markdown files have the correct filetype set and setup wrapping
 au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown
@@ -128,13 +137,6 @@ autocmd VimResized * wincmd =
 " Show double quotes in JSON from elzr/vim-json package
 let g:vim_json_syntax_conceal = 0
 
-
-" let g:syntastic_javascript_checkers = ['jsxhint']
-" let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
-
-" hi StatusLineNC ctermfg=60 ctermbg=8 cterm=NONE
-" hi StatusLine ctermfg=45 ctermbg=8 cterm=NONE
-" hi VertSplit ctermbg=8 ctermfg=8 cterm=NONE
 set fillchars+=vert:\ 
 
 let g:LanguageClient_serverCommands = {
@@ -143,18 +145,16 @@ let g:LanguageClient_serverCommands = {
     \ }
 
 " Gruvbox?
-hi vertsplit ctermfg=238 ctermbg=235
+" hi vertsplit ctermfg=238 ctermbg=235
 " hi StatusLine ctermfg=235 ctermbg=245
-hi StatusLineNC ctermfg=235 ctermbg=237
-hi Search ctermbg=58 ctermfg=15
-hi Default ctermfg=1
-hi clear SignColumn
-hi SignColumn ctermbg=235
-hi EndOfBuffer ctermfg=235 ctermbg=235
+" hi StatusLineNC ctermfg=235 ctermbg=237
+" hi Search ctermbg=58 ctermfg=15
+" hi Default ctermfg=1
+" hi clear SignColumn
+" hi SignColumn ctermbg=235
+" hi EndOfBuffer ctermfg=235 ctermbg=235
 
-set statusline=%=&P\ %f\ %m
 set fillchars=vert:\ ,stl:\ ,stlnc:\ 
-set laststatus=2
 set noshowmode
 
 " Fancy, visible console.log macro
