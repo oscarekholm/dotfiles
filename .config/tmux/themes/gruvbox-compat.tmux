@@ -45,17 +45,17 @@ set-window-option -g window-status-attr default
 set-option -g message-fg white
 set-option -g message-bg black
 set-option -g message-attr bright
-set -g status-left '#[fg=#666,bold] #S #[fg=colour252,bg=colour238,nobold]'
+set -g status-left '#[fg=#666,bold] #S #[fg=colour252,bg=colour238,nobold,bg=default]| '
 set -g status-justify left
-set -g window-status-format "> #I #W"
-set -g window-status-current-format "#[noreverse]> #I #W"
+set -g window-status-format "#I #W"
+set -g window-status-current-format "#[noreverse]💯 #I #W"
 set-window-option -g window-status-current-fg red
 set-window-option -g window-status-current-bg default
 set-window-option -g window-status-current-attr default
 
 set -g status-right-length 300
-set -g status-right '#[fg=yellow] #(np granhelvete) | #[fg=red,noreverse,nobold]%H:%M |#[fg=red,noreverse,nobold,bg=default] %y.%m.%d '
+set -g status-right '#[fg=yellow]#(np granhelvete) | #[fg=red,noreverse,nobold]🦉 %H:%M #[fg=yellow,noreverse,nobold,bg=default]| %d/%m-%y'
 
 # Hide now playing status
-bind > set -g status-right '#[fg=yellow] #(np granhelvete) | #[fg=red,noreverse,nobold]%H:%M |#[fg=red,noreverse,nobold,bg=default] %y.%m.%d '
-bind < set -g status-right '#[fg=red,noreverse,nobold]%H:%M |#[fg=red,noreverse,nobold,bg=default] %y.%m.%d '
+bind > set -g status-right '#[fg=yellow]#(np granhelvete) | #[fg=red,noreverse,nobold]🦉 %H:%M #[fg=yellow,noreverse,nobold,bg=default]| %d/%m-%y'
+bind < set -g status-right '#[fg=red,noreverse,nobold]🦉 %H:%M #[fg=yellow,noreverse,nobold,bg=default]| %d/%m-%y'
