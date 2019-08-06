@@ -1,0 +1,35 @@
+{
+    "workbench.colorTheme": "Atom One Light",
+    "breadcrumbs.enabled": false,
+    "editor.renderWhitespace": "all",
+    "workbench.editor.showTabs": false,
+    "editor.minimap.enabled": false,
+
+    "editor.renderWhitespace": "none", // removes whitespace chars
+    "editor.renderIndentGuides": false, // removes indent guides
+    "editor.folding": false, // removes the folding feature
+    "editor.glyphMargin": false, // removes the space used mainly for debugging indicators
+    "explorer.openEditors.visible": 0, // removes the open editors section at the top of the sidebar, you can see the opened files with ⌘ + ⌥ + Tab
+    "workbench.activityBar.visible": false, // removes the activity bar (the 4 icons at the left of the screen), so now you will have to open the explorer, git, debugger and extension with shortcuts or through the Command Palette
+    "workbench.editor.showIcons": false, // removes icon from opened files in tabs
+    "workbench.editor.tabCloseButton": "off", // removes cross icon from tabs
+    "workbench.statusBar.visible": false, // removes the status bar
+    "indenticator.color.dark": "rgba(255,255,255,.1)", // adds a subtle indent guide (needs Indenticator extension)
+    "workbench.colorCustomizations": { // object that allows you to customize your color theme: https://code.visualstudio.com/docs/getstarted/theme-color-reference 
+      "tab.activeBorder": "#0000" // removes border to highlight active tabs (the colors formats are: #RGB, #RGBA, #RRGGBB or #RRGGBBAA)
+    },
+
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.scrollbar.vertical": "hidden",
+    "editor.overviewRulerBorder": false,
+    "editor.lineNumbers": "relative",
+
+    "workbench.list.keyboardNavigation": "highlight",
+    "workbench.list.automaticKeyboardNavigation": false,
+
+    "editor.fontFamily": "Fira Code",
+    "window.zoomLevel": 1,
+
+    "window.titleBarStyle": "custom",
+    "window.nativeTabs": false,
+}
