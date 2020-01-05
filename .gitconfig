@@ -1,0 +1,24 @@
+[user]
+#  signingkey =
+#  name =
+#  email =
+[commit]
+  gpgsign = true
+[core]
+  excludesfile = $HOME/.gitignore
+[alias]
+    st = status
+    ci = commit
+    co = checkout
+    cp = cherry-pick
+
+    branch-name = "!git rev-parse --abbrev-ref HEAD"
+    publish = "!git push -u origin $(git branch-name)"
+    unpublish = "!git push origin :$(git branch-name)"
+    code-review = difftool origin/master...
+    unstage = reset HEAD
+    lg = log --graph --pretty=format:'%C(yellow)%d%Creset %C(cyan)%h%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=short --all
+    rem = rebase -i master
+
+    recent = for-each-ref --count=10 --sort=-committerdate refs/heads/ --format="%(refname:short)"
+    pick = !git checkout $(git recent | pick)
